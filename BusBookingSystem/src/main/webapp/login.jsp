@@ -32,15 +32,28 @@ body {
 </head>
 
 <body>
-
+	<%
+	String registerMsg = (String) request.getAttribute("registrationMsg");
+	%>
 	<%@include file="header.jsp"%>
 
 	<div class="container">
 
 		<h2 style="text-align: center; margin-top: 20px;">Sign in</h2>
 		<br>
+		<br>
+		<br>
+		<%
+		if (registerMsg != null) {
+		%>
+		<h1
+			style="text-align: center; color: ; font-style: oblique;"><%=registerMsg%></h1>
+		<%
+		}
+		%>
+		<br>
 		<form class="form validity" method="post" action="/"
-			style="width: 450px; margin-left: 350px; margin-top: 50px; font-variant:small-caps; font-weight: bold; font-size: large;">
+			style="width: 450px; margin-left: 350px; margin-top: 50px; font-variant: small-caps; font-weight: bold; font-size: large;">
 			<div class="form-group">
 				<label for="email2">E-mail</label> <input id="email2" name="email"
 					class="form-control" data-mismatch="Please include a valid email"
@@ -61,14 +74,15 @@ body {
 					</div>
 					<div class="form-group" style="float: right;">
 						<div class="rounded">
-							<a href="registration.jsp" style="font-size: medium; color: black;">Create
-								an Account</a>
+							<a href="registration.jsp"
+								style="font-size: medium; color: black;">Create an Account</a>
 						</div>
 					</div>
-					<br><br>
-						<div class="rounded">
-							<a href="forgotpassword.jsp" style="font-size: medium; color: black;">Forgot Password?</a>
-						</div>
+					<br> <br>
+					<div class="rounded">
+						<a href="forgotpassword.jsp"
+							style="font-size: medium; color: black;">Forgot Password?</a>
+					</div>
 				</div>
 			</div>
 

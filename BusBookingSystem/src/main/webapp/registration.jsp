@@ -38,26 +38,26 @@ body {
 	<div class="container">
 
 		<h2 style="text-align: center;">Sign Up</h2>
-		<br>
-		<form class="form validity" method="post" action="/"
-			style="width: 450px; margin-left: 350px; font-variant:small-caps; font-weight: bold; font-size: large;">
+
+		<form class="form validity" method="post" action="UserRegistration"
+			style="width: 450px; margin-left: 350px; font-variant: small-caps; font-weight: bold; font-size: large;">
 			<div class="form-group">
-				<label for="name2">First Name</label> <input id="name2" name="name"
-					class="form-control" data-missing="This field is required"
-					type="text" required>
+				<label for="name2">First Name</label> <input id="name2"
+					name="firstName" class="form-control"
+					data-missing="This field is required" type="text" required>
 			</div>
 
 			<div class="form-group">
-				<label for="name2">Last Name</label> <input id="name2" name="name"
-					class="form-control" data-missing="This field is required"
-					type="text" required>
+				<label for="name2">Last Name</label> <input id="name2"
+					name="lastName" class="form-control"
+					data-missing="This field is required" type="text" required>
 			</div>
 
 
 			<div class="form-group">
 				<label for="name2">Address</label>
 				<!--         <input id="name2" name="name" class="form-control" data-missing="This field is required" type="text" required> -->
-				<textarea rows="3" cols="50" class="form-control" name="name" 
+				<textarea rows="3" cols="50" class="form-control" name="address"
 					id="name2" data-missing="This field is required" required></textarea>
 			</div>
 
@@ -68,15 +68,16 @@ body {
 			</div>
 
 			<div class="form-group simple">
-				<label for="phone2">Phone (789-999-9999)</label> <input id="phone2"
-					name="phone" class="form-control" pattern="[789][0-9]{9}"
+				<label for="phone2">Phone (789-999-9999)</label> <input id="contact"
+					name="contact" class="form-control" pattern="[789][0-9]{9}"
 					data-mismatch="Enter 10 digit only" type="tel" required>
 			</div>
 
 			<div class="form-group simple">
 				<label for="phone2">Password</label>
 				<!--        <input id="phone2" name="phone" class="form-control" pattern="\d{3}[\-]\d{3}[\-]\d{4}" data-mismatch="Please match the requested format" type="tel" required> -->
-				<input type="password" class="form-control" id="myInput"
+				<input type="password" name="password" class="form-control"
+					id="myInput"
 					data-mismatch="Password Contail atleast 1 special character and 1 digit and Uppercase also"
 					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required> <br>
 				<!-- An element to toggle between password visibility -->
@@ -87,7 +88,8 @@ body {
 					</div>
 					<div class="form-group" style="float: right;">
 						<div class="rounded">
-							<a href="login.jsp" style="font-size: medium; color: black;">Already have an Account?</a>
+							<a href="login.jsp" style="font-size: medium; color: black;">Already
+								have an Account?</a>
 						</div>
 					</div>
 				</div>

@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>UserRegistration</display-name>
+    <servlet-name>UserRegistration</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.UserRegistration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserRegistration</servlet-name>
+    <url-pattern>/UserRegistration</url-pattern>
+  </servlet-mapping>
 </web-app>
