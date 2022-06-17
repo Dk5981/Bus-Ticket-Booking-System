@@ -2,6 +2,7 @@ package com.busticketbooking.bean;
 
 public class User {
 
+	private int userId;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -10,6 +11,14 @@ public class User {
 	private String password;
 	private String role;
 	private int status;
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -29,6 +29,28 @@ body {
 	background-size: 4500px;
 }
 </style>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	/* Validation of Email Already Exists or not during User Registration. */
+	$(document).ready(function() {
+		$("input[type=email]").blur(function() {
+			var str = $(".mail").val();
+			$.get("UserRegistration", {
+				email : str
+			}).done(function(data) {
+
+				if (data == 'true') {
+					//alert("This email id is already exist");
+					$('#email-error').html("This Email Id is Already Exist");
+					$(document).ready(function() {
+						$("input[type=email]").val('').focus();
+					});
+				}
+			});
+		});
+	});
+</script>
 </head>
 
 <body>
@@ -63,8 +85,9 @@ body {
 
 			<div class="form-group">
 				<label for="email2">E-mail</label> <input id="email2" name="email"
-					class="form-control" data-mismatch="Please include a valid email"
-					type="email" required>
+					class="form-control mail"
+					data-mismatch="Please include a valid email" type="email" required>
+				<span id="email-error" style="color: red; font-size: 15px;"></span>
 			</div>
 
 			<div class="form-group simple">

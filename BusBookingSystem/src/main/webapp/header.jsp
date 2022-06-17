@@ -1,3 +1,4 @@
+<%@page import="com.busticketbooking.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -46,6 +47,10 @@
 <script src="js/modernizrr.js"></script>
 </head>
 <body>
+	<%
+	HttpSession httpSession = request.getSession(false);
+	User user = (User) httpSession.getAttribute("userObject");
+	%>
 	<header class="clearfix">
 
 		<!-- Start  Logo & Naviagtion  -->
@@ -67,7 +72,17 @@
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="about.html">About Us</a></li>
 						<li><a href="registration.jsp">Registration</a></li>
+						<%
+						if (null == httpSession.getAttribute("userObject")) {
+						%>
 						<li><a href="login.jsp">Log In</a></li>
+						<%
+						} else {
+						%>
+						<li><a href="LoginAndLogout">Log Out</a></li>
+						<%
+						}
+						%>
 						<li><a href="blog.html">Blog</a>
 							<ul class="dropdown">
 								<li><a href="blog-item.html">Item Page</a></li>

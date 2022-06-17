@@ -32,27 +32,37 @@ body {
 </head>
 
 <body>
+	<!--registerMsg shows that your registration is done successfully on
+	login page.-->
 	<%
 	String registerMsg = (String) request.getAttribute("registrationMsg");
+	%>
+	<!-- Validation message for login page that entered email or password not found.-->
+	<%
+	String loginValidateMsg = (String) request.getAttribute("message");
 	%>
 	<%@include file="header.jsp"%>
 
 	<div class="container">
 
 		<h2 style="text-align: center; margin-top: 20px;">Sign in</h2>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<%
 		if (registerMsg != null) {
 		%>
-		<h1
-			style="text-align: center; color: ; font-style: oblique;"><%=registerMsg%></h1>
+		<h1 style="text-align: center; color: green; font-family: monospace;"><%=registerMsg%></h1>
+		<%
+		}
+		%>
+		<%
+		if (loginValidateMsg != null) {
+		%>
+		<h3 style="text-align: center; color: red; font-family: monospace;"><%=loginValidateMsg%></h3>
 		<%
 		}
 		%>
 		<br>
-		<form class="form validity" method="post" action="/"
+		<form class="form validity" method="post" action="LoginAndLogout"
 			style="width: 450px; margin-left: 350px; margin-top: 50px; font-variant: small-caps; font-weight: bold; font-size: large;">
 			<div class="form-group">
 				<label for="email2">E-mail</label> <input id="email2" name="email"
@@ -63,7 +73,8 @@ body {
 			<div class="form-group simple">
 				<label for="phone2">Password</label>
 				<!--        <input id="phone2" name="phone" class="form-control" pattern="\d{3}[\-]\d{3}[\-]\d{4}" data-mismatch="Please match the requested format" type="tel" required> -->
-				<input type="password" class="form-control" id="myInput"
+				<input type="password" class="form-control" name="password"
+					id="myInput"
 					data-mismatch="Password Contail atleast 1 special character and 1 digit and Uppercase also"
 					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required> <br>
 				<!-- An element to toggle between password visibility -->

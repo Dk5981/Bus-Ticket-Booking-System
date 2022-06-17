@@ -19,4 +19,14 @@
     <servlet-name>UserRegistration</servlet-name>
     <url-pattern>/UserRegistration</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginAndLogout</display-name>
+    <servlet-name>LoginAndLogout</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.LoginAndLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginAndLogout</servlet-name>
+    <url-pattern>/LoginAndLogout</url-pattern>
+  </servlet-mapping>
 </web-app>
