@@ -67,4 +67,21 @@ public class UserDaoImpl implements UserDao {
 		}
 		return user;
 	}
+
+	@Override
+	public String getUserPassword(Connection connection, String password) throws SQLException {
+		String pwd = null;
+		String getPassword = "select password from user where email_id=?";
+		try (PreparedStatement ps = connection.prepareStatement(getPassword)) {
+			ps.setString(1, password);
+			
+			ResultSet resultSet = ps.executeQuery();
+			
+			while(resultSet.next())
+			{
+				pwd = resultSet.getString("password");
+			}
+			return pwd;
+		}
+	}
 }

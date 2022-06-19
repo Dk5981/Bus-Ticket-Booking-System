@@ -9,4 +9,6 @@ public interface UserService {
 	public int checkEmailExist(String email);
 
 	public User checkLoginDetails(String email, String password);
+
+	public String fetchPassword(String email);
 }

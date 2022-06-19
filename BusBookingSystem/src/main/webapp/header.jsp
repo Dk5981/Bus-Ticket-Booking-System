@@ -69,25 +69,34 @@
 
 					<!-- Start Navigation List -->
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="registration.jsp">Registration</a></li>
+
 						<%
 						if (null == httpSession.getAttribute("userObject")) {
 						%>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="registration.jsp">Registration</a></li>
 						<li><a href="login.jsp">Log In</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<%
+						} else if (user.getRole().equals("Admin")) {
+						%>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="#">Add Bus</a></li>
+						<li><a href="#">Bus Report</a></li>
+						<li><a href="#">Book Ticket Report</a></li>
+						<li><a href="LoginAndLogout">Log Out</a></li>
 						<%
 						} else {
 						%>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="#">Search Bus</a></li>
+						<li><a href="#">My Booking</a></li>
 						<li><a href="LoginAndLogout">Log Out</a></li>
 						<%
 						}
 						%>
-						<li><a href="blog.html">Blog</a>
-							<ul class="dropdown">
-								<li><a href="blog-item.html">Item Page</a></li>
-							</ul></li>
-						<li><a href="contact.html">Contact</a></li>
 					</ul>
 					<!-- End Navigation List -->
 				</div>

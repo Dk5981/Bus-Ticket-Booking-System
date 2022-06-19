@@ -29,6 +29,38 @@ body {
 	background-size: 4500px;
 }
 </style>
+<!-- <script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script> -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	/* $("form").submit(function() {
+		if ($(this).valid()) { //<<< I was missing this check
+			$("#loading").show();
+		}
+	}); */
+	/* Validation of Email i.e. Email Id is Not Found. */
+	$(document).ready(function() {
+		$("input[type=email]").blur(function() {
+			var str = $(".mail").val();
+			$.get("UserRegistration", {
+				email : str
+			}).done(function(data) {
+
+				if (data == 'false') {
+					//alert("This email id is not matched.");
+					$('#email-error').html("This Email Id is not Matched.");
+					$(document).ready(function() {
+						$("input[type=email]").val('').focus();
+					});
+				}
+			});
+		});
+	});
+</script>
+
 </head>
 
 <body>
@@ -39,35 +71,18 @@ body {
 
 		<h2 style="text-align: center; margin-top: 20px;">Forgot Password</h2>
 		<br>
-		<form class="form validity" method="post" action="/"
-			style="width: 450px; margin-left: 350px; margin-top: 50px; font-variant:small-caps; font-weight: bold; font-size: large;">
+		<form class="form validity" method="post"
+			action="ForgotPasswordSendEmail"
+			style="width: 450px; margin-left: 350px; margin-top: 50px; font-variant: small-caps; font-weight: bold; font-size: large;">
 			<div class="form-group">
+
 				<label for="email2">E-mail</label> <input id="email2" name="email"
-					class="form-control" data-mismatch="Please include a valid email"
-					type="email" required>
+					class="form-control mail"
+					data-mismatch="Please include a valid email" type="email" required>
+				<span id="email-error" style="color: red; font-size: 15px;"></span>
 			</div>
 
-			<div class="form-group simple">
-				<label for="phone2">Password</label>
-				<!--        <input id="phone2" name="phone" class="form-control" pattern="\d{3}[\-]\d{3}[\-]\d{4}" data-mismatch="Please match the requested format" type="tel" required> -->
-				<input type="password" class="form-control" id="myInput"
-					data-mismatch="Password Contail atleast 1 special character and 1 digit and Uppercase also"
-					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required> <br>
-				<!-- An element to toggle between password visibility -->
-				<div class="form-inline">
-					<div class="form-group">
-						<input type="checkbox" onclick="myFunction()">Show
-						Password
-					</div>
-					<div class="form-group" style="float: right;">
-						<div class="rounded">
-							<a href="registration.jsp" style="font-size: medium; color: black;">Create
-								an Account</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
+			<a href="login.jsp">Back to Log In</a> <br> <br>
 			<button class="btn btn-block btn-primary" type="submit">Submit</button>
 		</form>
 	</div>

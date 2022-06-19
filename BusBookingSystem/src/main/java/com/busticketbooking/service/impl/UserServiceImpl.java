@@ -74,4 +74,15 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+
+	@Override
+	public String fetchPassword(String email) {
+		try (Connection connection = getConnection()) {
+			String password = userDao.getUserPassword(connection, email);
+			return password;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

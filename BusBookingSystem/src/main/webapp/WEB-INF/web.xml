@@ -29,4 +29,14 @@
     <servlet-name>LoginAndLogout</servlet-name>
     <url-pattern>/LoginAndLogout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ForgotPasswordSendEmail</display-name>
+    <servlet-name>ForgotPasswordSendEmail</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.ForgotPasswordSendEmail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPasswordSendEmail</servlet-name>
+    <url-pattern>/ForgotPasswordSendEmail</url-pattern>
+  </servlet-mapping>
 </web-app>

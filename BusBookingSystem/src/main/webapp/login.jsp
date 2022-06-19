@@ -41,6 +41,10 @@ body {
 	<%
 	String loginValidateMsg = (String) request.getAttribute("message");
 	%>
+	<!-- This emailMsg Shows that We have Successfully sent an email with your password to you pls enter your email and password here. -->
+	<%
+	String emailMsg = (String) request.getAttribute("emailMsg");
+	%>
 	<%@include file="header.jsp"%>
 
 	<div class="container">
@@ -58,6 +62,13 @@ body {
 		if (loginValidateMsg != null) {
 		%>
 		<h3 style="text-align: center; color: red; font-family: monospace;"><%=loginValidateMsg%></h3>
+		<%
+		}
+		%>
+		<%
+		if (emailMsg != null) {
+		%>
+		<h3 style="text-align: center; color: green; font-family: monospace;"><%=emailMsg%></h3>
 		<%
 		}
 		%>
