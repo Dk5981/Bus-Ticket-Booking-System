@@ -83,7 +83,7 @@
 						} else if (user.getRole().equals("Admin")) {
 						%>
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="#">Add Bus</a></li>
+						<li><a href="addbus.jsp">Add Bus</a></li>
 						<li><a href="#">Bus Report</a></li>
 						<li><a href="#">Book Ticket Report</a></li>
 						<li><a href="LoginAndLogout">Log Out</a></li>

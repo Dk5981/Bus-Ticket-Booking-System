@@ -39,4 +39,14 @@
     <servlet-name>ForgotPasswordSendEmail</servlet-name>
     <url-pattern>/ForgotPasswordSendEmail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddBusDetails</display-name>
+    <servlet-name>AddBusDetails</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.AddBusDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddBusDetails</servlet-name>
+    <url-pattern>/AddBusDetails</url-pattern>
+  </servlet-mapping>
 </web-app>
