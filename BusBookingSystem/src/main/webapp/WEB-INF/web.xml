@@ -49,4 +49,34 @@
     <servlet-name>AddBusDetails</servlet-name>
     <url-pattern>/AddBusDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewBusesReport</display-name>
+    <servlet-name>ViewBusesReport</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.ViewBusesReport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBusesReport</servlet-name>
+    <url-pattern>/ViewBusesReport</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditBusDetails</display-name>
+    <servlet-name>EditBusDetails</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.EditBusDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditBusDetails</servlet-name>
+    <url-pattern>/EditBusDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateBusDetails</display-name>
+    <servlet-name>UpdateBusDetails</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.UpdateBusDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateBusDetails</servlet-name>
+    <url-pattern>/UpdateBusDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

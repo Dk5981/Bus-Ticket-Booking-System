@@ -13,18 +13,18 @@ import com.busticketbooking.service.BusService;
 import com.busticketbooking.service.impl.BusServiceImpl;
 
 /**
- * Servlet implementation class AddBusDetails
+ * Servlet implementation class UpdateBusDetails
  */
-public class AddBusDetails extends HttpServlet {
+public class UpdateBusDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	Bus bus = new Bus();
 	BusService busService = new BusServiceImpl();
+	Bus bus = new Bus();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddBusDetails() {
+	public UpdateBusDetails() {
 		super();
 	}
 
@@ -43,6 +43,7 @@ public class AddBusDetails extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String Id = request.getParameter("busId");
 		String busNumber = request.getParameter("busNumber");
 		String busName = request.getParameter("busName");
 		String source = request.getParameter("source");
@@ -51,7 +52,11 @@ public class AddBusDetails extends HttpServlet {
 		String price = request.getParameter("price");
 		String date = request.getParameter("date");
 		String time = request.getParameter("time");
-
+		String availableSeats = request.getParameter("availableSeats");
+		
+		int busId = Integer.valueOf(Id);
+		
+		bus.setBusId(busId);
 		bus.setBusNumber(Integer.valueOf(busNumber));
 		bus.setBusName(busName);
 		bus.setBusSource(source);
@@ -60,13 +65,10 @@ public class AddBusDetails extends HttpServlet {
 		bus.setPrice(Integer.valueOf(price));
 		bus.setDate(date);
 		bus.setTime(time);
-		bus.setAvailableSeats(Integer.valueOf(totalSeats));
-		bus.setStatus(1);
+		bus.setAvailableSeats(Integer.valueOf(availableSeats));
 		
-		String busAddMsg = busService.addBusDetails(bus);
+		busService.editBusDetails(bus);
 		
-		request.setAttribute("busAddMsg", busAddMsg);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("addbus.jsp");
-		dispatcher.forward(request, response);		
+		response.sendRedirect("ViewBusesReport");
 	}
 }
