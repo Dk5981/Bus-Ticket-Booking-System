@@ -89,4 +89,19 @@ public class BusServiceImpl implements BusService {
 		}
 		return null;
 	}
+
+	@Override
+	public void removeBus(int busId) {
+		try (Connection connection = getConnection()) {
+			int result = busDao.deleteBus(connection, busId);
+
+			if (result > 0) {
+				System.out.println("Bus Deleted Successfully!");
+			} else {
+				System.out.println("Bus is not Deleted");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

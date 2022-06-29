@@ -1,22 +1,19 @@
 package com.busticketbooking.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.busticketbooking.bean.Bus;
 import com.busticketbooking.service.BusService;
 import com.busticketbooking.service.impl.BusServiceImpl;
 
 /**
- * Servlet implementation class ViewBusesReport
+ * Servlet implementation class DeleteBus
  */
-public class ViewBusesReport extends HttpServlet {
+public class DeleteBus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	BusService busService = new BusServiceImpl();
@@ -24,7 +21,7 @@ public class ViewBusesReport extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewBusesReport() {
+	public DeleteBus() {
 		super();
 	}
 
@@ -35,12 +32,14 @@ public class ViewBusesReport extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Bus> busList = busService.getBusDetails();
-		
-		request.setAttribute("busList", busList);
+		String id = request.getParameter("busid");
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("viewbuses.jsp");
-		dispatcher.forward(request, response);
+		int busId = Integer.parseInt(id);
+
+		busService.removeBus(busId);
+		
+		response.sendRedirect("ViewBusesReport");
+
 	}
 
 	/**

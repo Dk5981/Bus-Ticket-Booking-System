@@ -11,12 +11,19 @@
 <script type="text/javascript">
 	function getdid(busid) {
 		var busId = busid;
-		var strLink = "DeleteBus?id=" + busId;
-		document.getElementById("deleteid").setAttribute("href", strLink);
+		var x = confirm("Are you sure want to Delete?");
+		
+		if(x==true)
+		{
+			$(document).ready(function() {
+				
+					$.get("DeleteBus", {
+						busid : busId
+					})
+				});
+		}
 	}
 </script>
-
-
 <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bo
   otstrap.min.css" />-->
 
@@ -64,8 +71,7 @@ body {
 	<%
 	List<Bus> busList = (List<Bus>) request.getAttribute("busList");
 	%>
-	<div class="container" style="border: thin;">
-
+	<div class="container" style="border: t">
 		<h2 style="text-align: center; margin-top: 20px;">Bus Report</h2>
 		<br> <br>
 
@@ -90,6 +96,9 @@ body {
 				for (Bus bus : busList) {
 				%>
 				<%
+				if (bus.getStatus() != 0) {
+				%>
+				<%
 				if (bus.getBusId() != 0) {
 				%>
 				<%
@@ -109,48 +118,21 @@ body {
 						href="EditBusDetails?id=<%=bus.getBusId()%>"><i
 							class="fa fa-edit" aria-hidden="true"
 							style="color: green; cursor: pointer; font-size: 25px;"></i></a></td>
-					<td><a type="button"
-						href="EditCategoryServlet?id=<%=bus.getBusId()%>"><i
-							class="fa fa-trash" aria-hidden="true"
+					<td><a type="button"><i class="fa fa-trash"
+							onclick="getdid(<%=bus.getBusId()%>);" aria-hidden="true"
 							style="color: red; cursor: pointer; font-size: 25px;"></i></a></td>
-					<%
-					}
-					%>
-					<%
-					}
-					%>
-				
+				</tr>
+				<%
+				}
+				%>
+				<%
+				}
+				%>
+				<%
+				}
+				%>
 			</tbody>
 		</table>
-		<!-- <div class="modal fade" id="exampleModalCenter1" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="exampleModalLongTitle">
-						<i class="bi bi-exclamation-triangle"></i>Warning
-					</h4>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">Are you sure want to Delete ? It will
-					not undo.</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">
-						<i class="bi bi-x"></i>No
-					</button>
-					<button type="button" class="btn btn-primary">
-						<a style="color: white;" id="deleteid"><i class="bi bi-check"></i>Yes</a>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
- -->
 	</div>
 </body>
 </html>

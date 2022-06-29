@@ -14,4 +14,6 @@ public interface BusService {
 
 	public String editBusDetails(Bus bus);
 
+	public void removeBus(int busId);
+
 }

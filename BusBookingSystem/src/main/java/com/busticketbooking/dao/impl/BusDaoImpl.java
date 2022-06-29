@@ -113,9 +113,21 @@ public class BusDaoImpl implements BusDao {
 			ps.setString(8, bus.getDate());
 			ps.setString(9, bus.getTime());
 			ps.setInt(10, bus.getBusId());
-			
+
 			result = ps.executeUpdate();
 		}
 		return result;
+	}
+
+	@Override
+	public int deleteBus(Connection connection, int busId) throws SQLException {
+
+		String deleteQuery = "update bus set status=? where bus_id=?";
+		try (PreparedStatement ps = connection.prepareStatement(deleteQuery)) {
+			ps.setInt(1, 0);
+			ps.setInt(2, busId);
+
+			return ps.executeUpdate();
+		}
 	}
 }

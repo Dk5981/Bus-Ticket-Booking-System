@@ -17,4 +17,6 @@ public interface BusDao {
 
 	public int updateBusDetails(Connection connection, Bus bus) throws SQLException;
 
+	public int deleteBus(Connection connection, int busId) throws SQLException;
+
 }
