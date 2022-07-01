@@ -130,4 +130,42 @@ public class BusDaoImpl implements BusDao {
 			return ps.executeUpdate();
 		}
 	}
+
+	@Override
+	public List<Bus> deleteBus(Connection connection, String source, String destination, String date)
+			throws SQLException {
+
+		List<Bus> busList = new ArrayList<Bus>();
+
+		String selectBusQuery = "select * from bus where status=?";
+
+		try (PreparedStatement ps = connection.prepareStatement(selectBusQuery)) {
+
+			ps.setInt(1, 1);
+
+			ResultSet resultSet = ps.executeQuery();
+
+			while (resultSet.next()) {
+				Bus bus = new Bus();
+
+				bus.setBusId(resultSet.getInt("bus_id"));
+				bus.setBusNumber(resultSet.getInt("bus_number"));
+				bus.setBusName(resultSet.getString("bus_name"));
+				bus.setBusSource(resultSet.getString("source"));
+				bus.setBusDestination(resultSet.getString("destination"));
+				bus.setTotalSeats(resultSet.getInt("total_seats"));
+				bus.setPrice(resultSet.getInt("price"));
+				bus.setAvailableSeats(resultSet.getInt("available_seats"));
+				bus.setDate(resultSet.getString("date"));
+				bus.setTime(resultSet.getString("time"));
+
+				if (bus.getBusSource().equalsIgnoreCase(source) && bus.getBusDestination().equalsIgnoreCase(destination)
+						&& bus.getDate().equals(date)) {
+
+					busList.add(bus);
+				}
+			}
+		}
+		return busList;
+	}
 }

@@ -104,4 +104,15 @@ public class BusServiceImpl implements BusService {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public List<Bus> searchAvailableBuses(String source, String destination, String date) {
+		try (Connection connection = getConnection()) {
+			return busDao.deleteBus(connection, source, destination, date);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

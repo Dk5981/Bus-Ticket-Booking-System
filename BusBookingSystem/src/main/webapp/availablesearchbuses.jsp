@@ -8,22 +8,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function getdid(busid) {
 		var busId = busid;
 		var x = confirm("Are you sure want to Delete?");
-		
-		if(x==true)
-		{
+
+		if (x == true) {
 			$(document).ready(function() {
-				
-					$.get("DeleteBus", {
-						busid : busId
-					})
-				});
+
+				$.get("DeleteBus", {
+					busid : busId
+				})
+			});
 		}
 	}
 </script>
+ -->
 <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bo
   otstrap.min.css" />-->
 
@@ -39,6 +39,7 @@
 <link
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
 	rel="stylesheet">
+
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -55,7 +56,7 @@ body {
 	background-size: 4500px;
 }
 </style>
-<title>Bus Report</title>
+<title>Available Buses</title>
 </head>
 <body>
 	<script>
@@ -67,12 +68,12 @@ body {
 	<%
 	int cnt = 0;
 	%>
-	<!-- busList shows all the records of buses it is comes from the ViewBusesReport Servlet. -->
+	<!-- availableBuses shows all the available bus that user search. it is comes from the SearchBus Servlet. -->
 	<%
-	List<Bus> busList = (List<Bus>) request.getAttribute("busList");
+	List<Bus> availableBuses = (List<Bus>) request.getAttribute("availableBuses");
 	%>
 	<div class="container" style="border: t">
-		<h2 style="text-align: center; margin-top: 20px;">Bus Report</h2>
+		<h2 style="text-align: center; margin-top: 20px;">Available Buses</h2>
 		<br> <br>
 
 		<table id="myTable" class="table table-striped table-bordered">
@@ -87,16 +88,12 @@ body {
 					<th>Available Seats</th>
 					<th>Date</th>
 					<th>Time</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Book Bus</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-				for (Bus bus : busList) {
-				%>
-				<%
-				if (bus.getStatus() != 0) {
+				for (Bus bus : availableBuses) {
 				%>
 				<%
 				if (bus.getBusId() != 0) {
@@ -116,15 +113,9 @@ body {
 					<td><%=bus.getTime()%></td>
 					<td><a type="button"
 						href="EditBusDetails?id=<%=bus.getBusId()%>"><i
-							class="fa fa-edit" aria-hidden="true"
+							class="fa fa-bus" aria-hidden="true"
 							style="color: green; cursor: pointer; font-size: 25px;"></i></a></td>
-					<td><a type="button"><i class="fa fa-trash"
-							onclick="getdid(<%=bus.getBusId()%>);" aria-hidden="true"
-							style="color: red; cursor: pointer; font-size: 25px;"></i></a></td>
 				</tr>
-				<%
-				}
-				%>
 				<%
 				}
 				%>

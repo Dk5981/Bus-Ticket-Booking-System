@@ -1,19 +1,22 @@
 package com.busticketbooking.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.busticketbooking.bean.Bus;
 import com.busticketbooking.service.BusService;
 import com.busticketbooking.service.impl.BusServiceImpl;
 
 /**
- * Servlet implementation class DeleteBus
+ * Servlet implementation class SearchBus
  */
-public class DeleteBus extends HttpServlet {
+public class SearchBus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	BusService busService = new BusServiceImpl();
@@ -21,7 +24,7 @@ public class DeleteBus extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DeleteBus() {
+	public SearchBus() {
 		super();
 	}
 
@@ -31,16 +34,7 @@ public class DeleteBus extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-
-		String id = request.getParameter("busid");
-
-		int busId = Integer.parseInt(id);
-
-		busService.removeBus(busId);
-
-		response.sendRedirect("ViewBusesReport");
-
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,7 +43,23 @@ public class DeleteBus extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
-	}
 
+		String source = request.getParameter("source");
+		String destination = request.getParameter("destination");
+		String date = request.getParameter("date");
+
+		List<Bus> availableBuses = busService.searchAvailableBuses(source, destination, date);
+
+		if (availableBuses.size() == 0) {
+			request.setAttribute("busNotAvailable", "Sorry! Buses not Available.");
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("searchbuses.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			request.setAttribute("availableBuses", availableBuses);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("availablesearchbuses.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
 }

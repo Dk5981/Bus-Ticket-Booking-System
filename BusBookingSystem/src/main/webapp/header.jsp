@@ -91,7 +91,7 @@
 						} else {
 						%>
 						<li><a href="index.jsp">Home</a></li>
-						<li><a href="#">Search Bus</a></li>
+						<li><a href="searchbuses.jsp">Search Bus</a></li>
 						<li><a href="#">My Booking</a></li>
 						<li><a href="LoginAndLogout">Log Out</a></li>
 						<%
