@@ -16,6 +16,6 @@ public interface BusService {
 
 	public void removeBus(int busId);
 
-	public List<Bus> searchAvailableBuses(String source, String destination, String date);
+	public List<Bus> searchAvailableBuses(String source, String destination, String date, int seats);
 
 }

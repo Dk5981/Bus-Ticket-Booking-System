@@ -72,6 +72,9 @@ body {
 	<%
 	List<Bus> availableBuses = (List<Bus>) request.getAttribute("availableBuses");
 	%>
+	<%
+	Integer seats = (Integer) request.getAttribute("seats");
+	%>
 	<div class="container" style="border: t">
 		<h2 style="text-align: center; margin-top: 20px;">Available Buses</h2>
 		<br> <br>
@@ -86,6 +89,8 @@ body {
 					<th>Destination</th>
 					<th>Total Seats</th>
 					<th>Available Seats</th>
+					<th>Price per Seat</th>
+					<th>Your Total Cost</th>
 					<th>Date</th>
 					<th>Time</th>
 					<th>Book Bus</th>
@@ -109,6 +114,8 @@ body {
 					<td><%=bus.getBusDestination()%></td>
 					<td><%=bus.getTotalSeats()%></td>
 					<td><%=bus.getAvailableSeats()%></td>
+					<td><%=bus.getPrice()%></td>
+					<td><%=bus.getPrice() * seats%>
 					<td><%=bus.getDate()%></td>
 					<td><%=bus.getTime()%></td>
 					<td><a type="button"

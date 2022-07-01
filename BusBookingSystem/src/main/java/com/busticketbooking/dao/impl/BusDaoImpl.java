@@ -132,16 +132,17 @@ public class BusDaoImpl implements BusDao {
 	}
 
 	@Override
-	public List<Bus> deleteBus(Connection connection, String source, String destination, String date)
+	public List<Bus> deleteBus(Connection connection, String source, String destination, String date, int seats)
 			throws SQLException {
 
 		List<Bus> busList = new ArrayList<Bus>();
 
-		String selectBusQuery = "select * from bus where status=?";
+		String selectBusQuery = "select * from bus where status=? and available_seats>=?";
 
 		try (PreparedStatement ps = connection.prepareStatement(selectBusQuery)) {
 
 			ps.setInt(1, 1);
+			ps.setInt(2, seats);
 
 			ResultSet resultSet = ps.executeQuery();
 

@@ -72,6 +72,13 @@ body {
 					type="date" required>
 			</div>
 
+			<div class="form-group">
+				<label for="name2">Seats</label> <input id="name2" name="seats"
+					class="form-control" data-missing="This field is required"
+					type="text" required>
+
+			</div>
+
 			<button class="btn btn-block btn-primary" type="submit">Submit</button>
 		</form>
 	</div>

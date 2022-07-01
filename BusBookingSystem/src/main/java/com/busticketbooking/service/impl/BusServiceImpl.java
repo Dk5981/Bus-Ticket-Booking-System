@@ -106,9 +106,9 @@ public class BusServiceImpl implements BusService {
 	}
 
 	@Override
-	public List<Bus> searchAvailableBuses(String source, String destination, String date) {
+	public List<Bus> searchAvailableBuses(String source, String destination, String date, int seats) {
 		try (Connection connection = getConnection()) {
-			return busDao.deleteBus(connection, source, destination, date);
+			return busDao.deleteBus(connection, source, destination, date, seats);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

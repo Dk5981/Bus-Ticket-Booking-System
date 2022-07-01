@@ -47,8 +47,11 @@ public class SearchBus extends HttpServlet {
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
 		String date = request.getParameter("date");
+		String seat = request.getParameter("seats");
+		
+		int seats = Integer.parseInt(seat);
 
-		List<Bus> availableBuses = busService.searchAvailableBuses(source, destination, date);
+		List<Bus> availableBuses = busService.searchAvailableBuses(source, destination, date, seats);
 
 		if (availableBuses.size() == 0) {
 			request.setAttribute("busNotAvailable", "Sorry! Buses not Available.");
@@ -57,6 +60,7 @@ public class SearchBus extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			request.setAttribute("availableBuses", availableBuses);
+			request.setAttribute("seats", seats);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("availablesearchbuses.jsp");
 			dispatcher.forward(request, response);
