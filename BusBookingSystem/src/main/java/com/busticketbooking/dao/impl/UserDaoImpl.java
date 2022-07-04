@@ -74,14 +74,36 @@ public class UserDaoImpl implements UserDao {
 		String getPassword = "select password from user where email_id=?";
 		try (PreparedStatement ps = connection.prepareStatement(getPassword)) {
 			ps.setString(1, password);
-			
+
 			ResultSet resultSet = ps.executeQuery();
-			
-			while(resultSet.next())
-			{
+
+			while (resultSet.next()) {
 				pwd = resultSet.getString("password");
 			}
 			return pwd;
+		}
+	}
+
+	@Override
+	public User selectUserDetails(Connection connection, int userId) throws SQLException {
+		User user = new User();
+		String selectUser = "select * from user where user_id=?";
+		try (PreparedStatement ps = connection.prepareStatement(selectUser)) {
+			ps.setInt(1, userId);
+
+			ResultSet resultSet = ps.executeQuery();
+
+			while (resultSet.next()) {
+				
+				user.setUserId(resultSet.getInt("user_id"));
+				user.setFirstName(resultSet.getString("first_name"));
+				user.setLastName(resultSet.getString("last_name"));
+				user.setAddress(resultSet.getString("address"));
+				user.setEmailId(resultSet.getString("email_id"));
+				user.setContact(resultSet.getString("contact"));
+				user.setRole(resultSet.getString("role"));
+			}
+			return user;
 		}
 	}
 }

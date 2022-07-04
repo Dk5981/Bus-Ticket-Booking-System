@@ -99,4 +99,14 @@
     <servlet-name>SearchBus</servlet-name>
     <url-pattern>/SearchBus</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookBusDetails</display-name>
+    <servlet-name>BookBusDetails</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.BookBusDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookBusDetails</servlet-name>
+    <url-pattern>/BookBusDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

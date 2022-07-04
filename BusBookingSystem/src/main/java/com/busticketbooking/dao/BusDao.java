@@ -21,4 +21,6 @@ public interface BusDao {
 
 	public List<Bus> deleteBus(Connection connection, String source, String destination, String date, int seats) throws SQLException;
 
+	public int updateAvailableSeats(Connection connection, int busId, int seats) throws SQLException;
+
 }

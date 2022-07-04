@@ -14,4 +14,6 @@ public interface UserDao {
 	public User verifyEmailExists(Connection connection, String email, String password) throws SQLException;
 
 	public String getUserPassword(Connection connection, String password) throws SQLException;
+
+	public User selectUserDetails(Connection connection, int userId) throws SQLException;
 }

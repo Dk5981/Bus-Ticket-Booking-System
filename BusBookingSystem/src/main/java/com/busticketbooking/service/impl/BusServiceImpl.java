@@ -115,4 +115,24 @@ public class BusServiceImpl implements BusService {
 		}
 		return null;
 	}
+
+	@Override
+	public String setAvailableSeats(int busId, int seats) {
+		try (Connection connection = getConnection()) {
+			int result = busDao.updateAvailableSeats(connection, busId, seats);
+			
+			if(result > 0)
+			{
+				return "Seats Updated Successfully!";
+			}
+			else
+			{
+				return "Seats is not Updated.";
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

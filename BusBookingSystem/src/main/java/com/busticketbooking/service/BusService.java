@@ -18,4 +18,6 @@ public interface BusService {
 
 	public List<Bus> searchAvailableBuses(String source, String destination, String date, int seats);
 
+	public String setAvailableSeats(int busId, int seats);
+
 }

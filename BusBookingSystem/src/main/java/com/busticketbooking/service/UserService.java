@@ -11,4 +11,6 @@ public interface UserService {
 	public User checkLoginDetails(String email, String password);
 
 	public String fetchPassword(String email);
+
+	public User getUserDetails(int userId);
 }

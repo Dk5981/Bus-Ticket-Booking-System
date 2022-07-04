@@ -85,4 +85,15 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+
+	@Override
+	public User getUserDetails(int userId) {
+		try (Connection connection = getConnection()) {
+			User user = userDao.selectUserDetails(connection, userId);
+			return user;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

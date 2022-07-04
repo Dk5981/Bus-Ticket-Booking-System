@@ -169,4 +169,38 @@ public class BusDaoImpl implements BusDao {
 		}
 		return busList;
 	}
+
+	@Override
+	public int updateAvailableSeats(Connection connection, int busId, int seats) throws SQLException {
+		int availableSeat = 0;
+
+		String selectSeats = "select available_seats from bus where bus_id = ?";
+
+		try (PreparedStatement ps = connection.prepareStatement(selectSeats);) {
+
+			ps.setInt(1, busId);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next())
+				availableSeat = rs.getInt("available_seats");
+
+		}
+
+		String updateQuery = "update bus set available_seats=? where bus_id=?";
+		try {
+			PreparedStatement ps1 = connection.prepareStatement(updateQuery);
+
+			int remainingSeats = availableSeat - seats;
+
+			ps1.setInt(1, remainingSeats);
+			ps1.setInt(2, busId);
+
+			return ps1.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

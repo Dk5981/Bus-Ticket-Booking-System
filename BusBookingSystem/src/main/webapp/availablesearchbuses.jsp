@@ -119,7 +119,7 @@ body {
 					<td><%=bus.getDate()%></td>
 					<td><%=bus.getTime()%></td>
 					<td><a type="button"
-						href="EditBusDetails?id=<%=bus.getBusId()%>"><i
+						href="BookBusDetails?id=<%=bus.getBusId()%>&&seats=<%=seats%>"><i
 							class="fa fa-bus" aria-hidden="true"
 							style="color: green; cursor: pointer; font-size: 25px;"></i></a></td>
 				</tr>
