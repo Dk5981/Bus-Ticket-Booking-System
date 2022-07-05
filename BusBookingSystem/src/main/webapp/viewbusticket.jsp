@@ -51,7 +51,7 @@ tr:nth-child(even) {
 }
 
 tr {
-	border-style: solid;
+	border-style: outset;
 	border-top: 1px;
 	border-top-color: #6c757d;
 	border-left: none;
@@ -108,8 +108,8 @@ tr {
 				<h1 style="font-family: Lucida Console; color: #d9edf7;">Your
 					Bus Ticket</h1>
 			</div>
-			<h3 style="padding-bottom: 40px; font-family:" LucidaConsole, Courier, monospace;">Congratulations!!!
-				Your Ticket Booked Successfully.</h3>
+			<div style="padding-bottom: 40px; font-family: Lucida Console;"><h3>Congratulations!!!
+				Your Ticket Booked Successfully.</h3></div>
 			<div class="container">
 				<table class="table table-hover active">
 
