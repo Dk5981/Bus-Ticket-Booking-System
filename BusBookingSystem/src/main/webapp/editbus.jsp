@@ -10,7 +10,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript">
+	function getdid() {
 
+		var remainingSeats = document.getElementById('seat').value;
+		var totalSeat = document.getElementById('totalSeat').value;
+		$(document)
+				.ready(
+						function() {
+
+							$
+									.get("UpdateBusDetails", {
+										availableSeats : remainingSeats,
+										totalSeats : totalSeat
+									})
+									.done(
+											function(data) {
+
+												if (data == 'true') {
+													//alert("Available Seats are not more than total seats.");
+													$('#seats-error')
+															.html(
+																	"Available Seats are not more than Total Seats.");
+													$(document)
+															.ready(
+																	function() {
+																		$(
+																				'#seat')
+																				.val(
+																						'')
+																				.focus();
+																	});
+												} else {
+													$('#seats-error')
+															.html(
+																	"");
+												}
+											});
+						});
+	}
+</script>
 
 <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bo
   otstrap.min.css" />-->
@@ -41,13 +80,14 @@ body {
 
 	<div class="container">
 
-		<h2 style="text-align: center; margin-top: 20px;">Edit Bus Details</h2>
+		<h2 style="text-align: center; margin-top: 20px;">Edit Bus
+			Details</h2>
 		<form class="form validity" method="post" action="UpdateBusDetails"
 			style="width: 450px; margin-left: 350px; margin-top: 50px; font-variant: small-caps; font-weight: bold; font-size: large;">
 
 			<div class="form-group">
-			
-			<input type="hidden" name="busId" value="<%=bus.getBusId() %>">
+
+				<input type="hidden" name="busId" value="<%=bus.getBusId()%>">
 				<label for="name2">Bus Number</label> <input id="name2"
 					name="busNumber" class="form-control"
 					value="<%=bus.getBusNumber()%>"
@@ -74,14 +114,17 @@ body {
 			</div>
 
 			<div class="form-group">
-				<label for="name2">Total Seats</label> <input id="name2"
+				<label for="name2">Total Seats</label> <input id="totalSeat"
 					name="seats" value="<%=bus.getTotalSeats()%>" class="form-control"
 					data-missing="This field is required" type="text" required>
 			</div>
 			<div class="form-group">
-				<label for="name2">Available Seats</label> <input id="name2"
-					name="availableSeats" value="<%=bus.getAvailableSeats()%>" class="form-control"
+				<label for="name2">Available Seats</label> <input id="seat"
+					name="availableSeats" onBlur="getdid();"
+					value="<%=bus.getAvailableSeats()%>" class="form-control"
 					data-missing="This field is required" type="text" required>
+				<span id="seats-error" style="color: red; font-size: 15px;"></span>
+
 			</div>
 			<div class="form-group">
 				<label for="name2">Price</label> <input id="name2" name="price"

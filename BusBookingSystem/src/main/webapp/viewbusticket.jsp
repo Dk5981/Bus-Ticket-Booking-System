@@ -40,10 +40,15 @@ body {
 	background-size: 4500px;
 }
 
+tr:nth-child(odd) {
+	background-color: #d9edf7;
+	color: black;
+}
 
-tr:nth-child(odd) {background-color: black; color:white;}
-tr:nth-child(even) {background-color: grey; color:white;}
-
+tr:nth-child(even) {
+	background-color: aliceblue;
+	color: black;
+}
 
 tr {
 	border-style: solid;
@@ -100,61 +105,75 @@ tr {
 
 		<div class="main">
 			<div class="up">
-				<h1 style="font-family: Lucida Console; color: white;">Your Bus
-					Ticket</h1>
+				<h1 style="font-family: Lucida Console; color: #d9edf7;">Your
+					Bus Ticket</h1>
 			</div>
-			<h1 style="padding-bottom: 40px;">Congoratulations!</h1>
+			<h3 style="padding-bottom: 40px; font-family:" LucidaConsole, Courier, monospace;">Congratulations!!!
+				Your Ticket Booked Successfully.</h3>
 			<div class="container">
 				<table class="table table-hover active">
 
 					<tbody>
 						<tr>
+							<th scope="row">Passenger Name :</th>
+							<td><%=user.getFirstName()%></td>
+						</tr>
+						<tr>
 							<th scope="row">Bus Name :</th>
-							<td>yfytftyf</td>
+							<td><%=bus.getBusName()%></td>
+						</tr>
+						<tr>
+							<th scope="row">Bus Number :</th>
+							<td><%=bus.getBusNumber()%></td>
 						</tr>
 						<tr>
 							<th scope="row">Source :</th>
-							<td>123</td>
+							<td><%=bus.getBusSource()%></td>
 						</tr>
 						<tr>
 							<th scope="row">Destination :</th>
-							<td>fuck off</td>
+							<td><%=bus.getBusDestination()%></td>
 						</tr>
 						<tr>
 							<th scope="row">Number of Seats :</th>
-							<td>huhu</td>
+							<td><%=booking.getSeats()%></td>
 
 						</tr>
 						<tr>
 							<th scope="row">Price :</th>
-							<td>huhu</td>
+							<td><%=bus.getPrice()%></td>
 
 						</tr>
 						<tr>
 							<th scope="row">Cost :</th>
-							<td>huhu</td>
+							<td><%=booking.getCost()%></td>
 
 						</tr>
 						<tr>
-							<th scope="row">Date :</th>
-							<td>huhu</td>
+							<th scope="row">Pick Up Date :</th>
+							<td><%=bus.getDate()%></td>
 
 						</tr>
 						<tr>
-							<th scope="row">Time :</th>
-							<td>huhu</td>
+							<th scope="row">Pick Up Time :</th>
+							<td><%=bus.getTime()%></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Bus Booking Date :</th>
+							<td><%=booking.getBookingDate()%></td>
 
 						</tr>
 					</tbody>
 				</table>
-				<button  style="background-color:#0d6efd; color: white" onclick="window.print();">
-					<i class="fa fa-print"></i> Print
+				<button style="background-color: #0d6efd; color: white"
+					onclick="window.print();">
+					<i class="fa fa-print"></i> Print Ticket
 				</button>
-
 			</div>
 			<div class="down">
-				<h1 style="font-family: Lucida Console; color: white;">Your Bus
-					Ticket</h1>
+				<h5 style="font-family: Lucida Console; color: white;">2022 All
+					rights reserved @Follow the Road!!!</h5>
 			</div>
 		</div>
 	</body>

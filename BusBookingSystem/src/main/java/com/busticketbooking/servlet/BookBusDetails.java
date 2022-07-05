@@ -1,6 +1,8 @@
 package com.busticketbooking.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,6 +45,8 @@ public class BookBusDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		System.out.println("Servlet Called.");
+
 		HttpSession httpSession = request.getSession(false);
 		User user = (User) httpSession.getAttribute("userObject");
 
@@ -68,6 +72,16 @@ public class BookBusDetails extends HttpServlet {
 		booking.setUserId(userId);
 		booking.setSeats(seats);
 		booking.setCost(cost);
+
+		LocalDate dateObj = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String date = dateObj.format(formatter);
+		
+		System.out.println("Current Date : " + date);
+
+		booking.setBookingDate(date);
+		
+		System.out.println(booking.getBookingDate());
 
 		String result = bookingBusService.addBookingDetails(booking);
 

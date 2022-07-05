@@ -1,14 +1,12 @@
 package com.busticketbooking.bean;
 
-import java.sql.Timestamp;
-
 public class Booking {
 
 	private int bookingId;
 	private int userId;
 	private int busId;
 	private int seats;
-	private Timestamp bookingDate;
+	private String bookingDate;
 	private int cost;
 
 	public int getBookingId() {
@@ -43,11 +41,11 @@ public class Booking {
 		this.seats = seats;
 	}
 
-	public Timestamp getBookingDate() {
+	public String getBookingDate() {
 		return bookingDate;
 	}
 
-	public void setBookingDate(Timestamp bookingDate) {
+	public void setBookingDate(String bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 
@@ -64,4 +62,5 @@ public class Booking {
 		return "Booking [bookingId=" + bookingId + ", userId=" + userId + ", busId=" + busId + ", seats=" + seats
 				+ ", bookingDate=" + bookingDate + ", cost=" + cost + "]";
 	}
+
 }

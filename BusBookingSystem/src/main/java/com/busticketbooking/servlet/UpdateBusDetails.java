@@ -17,7 +17,7 @@ import com.busticketbooking.service.impl.BusServiceImpl;
  */
 public class UpdateBusDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	BusService busService = new BusServiceImpl();
 	Bus bus = new Bus();
 
@@ -34,7 +34,17 @@ public class UpdateBusDetails extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String availableSeats = request.getParameter("availableSeats");
+		String totalSeats = request.getParameter("totalSeats");
+
+		int totalSeat = Integer.parseInt(totalSeats);
+		int availableSeat = Integer.parseInt(availableSeats);
+
+		if (availableSeat > totalSeat) {
+			response.getWriter().append("true");
+		} else {
+			response.getWriter().append("false");
+		}
 	}
 
 	/**
@@ -53,9 +63,9 @@ public class UpdateBusDetails extends HttpServlet {
 		String date = request.getParameter("date");
 		String time = request.getParameter("time");
 		String availableSeats = request.getParameter("availableSeats");
-		
+
 		int busId = Integer.valueOf(Id);
-		
+
 		bus.setBusId(busId);
 		bus.setBusNumber(Integer.valueOf(busNumber));
 		bus.setBusName(busName);
@@ -66,9 +76,9 @@ public class UpdateBusDetails extends HttpServlet {
 		bus.setDate(date);
 		bus.setTime(time);
 		bus.setAvailableSeats(Integer.valueOf(availableSeats));
-		
+
 		busService.editBusDetails(bus);
-		
+
 		response.sendRedirect("ViewBusesReport");
 	}
 }
