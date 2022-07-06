@@ -51,7 +51,7 @@ tr:nth-child(even) {
 }
 
 tr {
-	border-style: outset;
+	border-style: double;
 	border-top: 1px;
 	border-top-color: #6c757d;
 	border-left: none;
@@ -70,26 +70,39 @@ tr {
 }
 
 .up {
-	margin-bottom: 40px;
 	height: 50px;
 	width: 100%;
 	/* 	border-color: black;
 	border-style: double;
 	border-width: 2px; */
 	background-color: #345;
-	font-family: "Lucida Console", Courier, monospace;
 }
 
 .down {
 	margin-top: 60px;
 	height: 50px;
 	width: 100%;
+	padding: 20px;
 	/*  	border-color: black;
 	border-style: double;
 	border-width: 2px; */
 	background-color: #345;
 	font-family: "Lucida Console", Courier, monospace;
 }
+
+.logo {
+	width: 160px;
+	height: 135px;
+	padding-left: 40px;
+}
+.align{
+font-family: monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 80px;
+    text-align: center;
+    padding-left: 50px;}
 </style>
 <title>Bus Ticket</title>
 </head>
@@ -108,8 +121,15 @@ tr {
 				<h1 style="font-family: Lucida Console; color: #d9edf7;">Your
 					Bus Ticket</h1>
 			</div>
-			<div style="padding-bottom: 40px; font-family: Lucida Console;"><h3>Congratulations!!!
-				Your Ticket Booked Successfully.</h3></div>
+			<div class="form-inline" style="margin-right: 300px; margin-bottom: -90px">
+				<div class="form-group" style="margin-bottom: 90px;">
+					<img class="logo" height="20px" width="20px"
+						src="images/buslogoonlineedit.png">
+				</div>
+				<div class="form-group">
+					<h3 class="align">Congratulations!!! Your Ticket Booked Successfully.</h3>
+				</div>
+			</div>
 			<div class="container">
 				<table class="table table-hover active">
 
