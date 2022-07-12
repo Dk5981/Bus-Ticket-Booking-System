@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.busticketbooking.bean.User;
 import com.busticketbooking.dao.UserDao;
@@ -94,7 +96,7 @@ public class UserDaoImpl implements UserDao {
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				
+
 				user.setUserId(resultSet.getInt("user_id"));
 				user.setFirstName(resultSet.getString("first_name"));
 				user.setLastName(resultSet.getString("last_name"));
@@ -105,5 +107,34 @@ public class UserDaoImpl implements UserDao {
 			}
 			return user;
 		}
+	}
+
+	@Override
+	public List<User> selectUserDetails(Connection connection) throws SQLException {
+
+		List<User> userList = new ArrayList<User>();
+
+		String selectUser = "select * from user where role=?";
+		try (PreparedStatement ps = connection.prepareStatement(selectUser)) {
+
+			ps.setString(1, "User");
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				User user = new User();
+
+				user.setUserId(rs.getInt("user_id"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("last_name"));
+				user.setAddress(rs.getString("address"));
+				user.setEmailId(rs.getString("email_id"));
+				user.setContact(rs.getString("contact"));
+				user.setRole(rs.getString("role"));
+				
+				userList.add(user);
+			}
+		}
+		return userList;
 	}
 }

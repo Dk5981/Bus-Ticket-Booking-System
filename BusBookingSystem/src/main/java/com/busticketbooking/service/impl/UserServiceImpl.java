@@ -3,6 +3,7 @@ package com.busticketbooking.service.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.busticketbooking.bean.User;
 import com.busticketbooking.dao.UserDao;
@@ -91,6 +92,16 @@ public class UserServiceImpl implements UserService {
 		try (Connection connection = getConnection()) {
 			User user = userDao.selectUserDetails(connection, userId);
 			return user;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<User> getUserDetails() {
+		try (Connection connection = getConnection()) {
+			return userDao.selectUserDetails(connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

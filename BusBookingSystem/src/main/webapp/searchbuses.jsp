@@ -31,9 +31,11 @@ body {
 	background-size: 4500px;
 }
 </style>
+
 </head>
 
 <body>
+
 	<%@include file="header.jsp"%>
 
 	<!-- This busNotAvailable shows that buses are not available. It comes from the SearchBus Servlet -->
@@ -67,7 +69,7 @@ body {
 			</div>
 
 			<div class="form-group">
-				<label for="name2">Date</label> <input id="name2" name="date"
+				<label for="name2">Date</label> <input id="myDate" name="date"
 					class="form-control" data-missing="This field is required"
 					type="date" required>
 			</div>
@@ -83,7 +85,13 @@ body {
 		</form>
 	</div>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		
+	</script>
+	<script type="text/javascript">
+		const d = new Date().toISOString().slice(0, 10);
+		document.getElementById("myDate").min = d;
+	</script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js1/jquery.validity.min.js"></script>

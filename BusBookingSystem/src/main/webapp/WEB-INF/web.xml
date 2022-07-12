@@ -109,4 +109,24 @@
     <servlet-name>BookBusDetails</servlet-name>
     <url-pattern>/BookBusDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyBooking</display-name>
+    <servlet-name>MyBooking</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.MyBooking</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyBooking</servlet-name>
+    <url-pattern>/MyBooking</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAllBookings</display-name>
+    <servlet-name>ViewAllBookings</servlet-name>
+    <servlet-class>com.busticketbooking.servlet.ViewAllBookings</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAllBookings</servlet-name>
+    <url-pattern>/ViewAllBookings</url-pattern>
+  </servlet-mapping>
 </web-app>

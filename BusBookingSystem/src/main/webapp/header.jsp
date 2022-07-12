@@ -85,14 +85,14 @@
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="addbus.jsp">Add Bus</a></li>
 						<li><a href="ViewBusesReport">Bus Report</a></li>
-						<li><a href="#">Book Ticket Report</a></li>
+						<li><a href="ViewAllBookings">Book Ticket Report</a></li>
 						<li><a href="LoginAndLogout">Log Out</a></li>
 						<%
 						} else {
 						%>
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="searchbuses.jsp">Search Bus</a></li>
-						<li><a href="#">My Booking</a></li>
+						<li><a href="MyBooking">My Booking</a></li>
 						<li><a href="LoginAndLogout">Log Out</a></li>
 						<%
 						}

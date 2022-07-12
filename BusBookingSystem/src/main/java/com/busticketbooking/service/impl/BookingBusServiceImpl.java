@@ -3,6 +3,7 @@ package com.busticketbooking.service.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.busticketbooking.bean.Booking;
 import com.busticketbooking.dao.BookingBusDao;
@@ -10,7 +11,7 @@ import com.busticketbooking.dao.impl.BookingBusDaoImpl;
 import com.busticketbooking.service.BookingBusService;
 
 public class BookingBusServiceImpl implements BookingBusService {
-	
+
 	BookingBusDao bookingBusDao = new BookingBusDaoImpl();
 
 	public Connection getConnection() {
@@ -40,6 +41,28 @@ public class BookingBusServiceImpl implements BookingBusService {
 			} else {
 				return "Registration is not Done.";
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Booking> getUserBooking(int userId) {
+		try (Connection connection = getConnection()) {
+			return bookingBusDao.selectMyBooking(connection, userId);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Booking> getBookingDetails() {
+		try (Connection connection = getConnection()) {
+			return bookingBusDao.getAllBooking(connection);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
